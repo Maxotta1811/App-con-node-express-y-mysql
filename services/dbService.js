@@ -1,5 +1,5 @@
-const dbService = () => {
-    const knex = require("knex") ({
+const dbService = (table) => {
+    const knex = require("knex")({
         client: "mysql2",
         connection: {
             host: process.env.DB_HOST,
@@ -10,41 +10,43 @@ const dbService = () => {
         },
     });
 
-    const table = "clientes";
-
-    const verclientes = () => {
-        return knex(table).select();
-    }
-
-    const agregarcliente = ({nomclient, dirclient, telclient}) => {
-        return knex(table).insert({
-            nomclient: nomclient,
-            dirclient: dirclient,
-            telclient: telclient,
-        });
+    const verRegistros = () => {
+        return knex.queryBuilder().from(table).select();
     };
 
-    const modificarcliente = (idcliente, {nomclient, dirclient, telclient}) => {
-        return knex(table).where("idcliente", idcliente).update({
-            nomclient: nomclient,
-            dirclient: dirclient,
-            telclient: telclient,
-        });
-    };
-    
-    const borrarcliente = (idcliente) => {
-        return knex(table).where("idcliente", idcliente).del();
+    const agregarRegistro = (data) => {
+        return knex(table)
+          .insert(data)
+          .then(() => {
+            return knex(table).where(data).select('*');
+          })
+          .then((result) => result[0]);
+      };
+
+      const modificarRegistro = (idColumn, id, data) => {
+        if (!idColumn || !id || !data) {
+          return Promise.reject(new Error('Parámetros incorrectos'));
+        }
+      
+        return knex(table)
+          .where(idColumn, id)
+          .update(data)
+          .then(() => {
+            return knex(table).where(idColumn, id).select('*');
+          })
+          .then((result) => result[0]);
+      };
+
+      const borrarRegistro = (idColumn, id) => {
+        return knex(table).where(idColumn, id).del();
     };
 
     return {
-        verclientes,
-        agregarcliente,
-        modificarcliente,
-        borrarcliente,
+        verRegistros,
+        agregarRegistro,
+        modificarRegistro,
+        borrarRegistro,
     };
-
 };
 
-    module.exports = {
-        dbService
-    }
+module.exports = { dbService };

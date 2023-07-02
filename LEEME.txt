@@ -1,0 +1,102 @@
+PARA HACER EL LOGIN: 
+
+{
+    "usuario": "admin",
+    "pass": "123456"
+}
+
+TABLA CLIENTES:
+
+1- PARA AGREGAR CLIENTE: 
+{
+    "nomclient": "Nombre",
+    "dirclient": "Direccion",
+    "telclient": "Telefono"
+}
+
+2- PARA MODIFICAR CLIENTE: 
+{
+    "idcliente": ID,
+    "nomclient": "Nombre",
+    "dirclient": "Direccion",
+    "telclient": "Telefono"
+}
+
+3- PARA BORRAR CLIENTE: 
+{
+    "idcliente": ID
+}
+
+TABLA PROVEEDOR: 
+
+1- AGREGAR PROVEEDOR: 
+{
+    "idprov": ID,
+    "nomprov": "Nombre",
+    "dirprov": "Direccion",
+    "contactoprov": "Contacto"
+}
+
+2- MODIFICAR PROVEEDOR: 
+{
+    "idprov": ID,
+    "nomprov": "Nombre",
+    "dirprov": "Direccion",
+    "contactoprov": "Contacto"
+}
+
+3- BORRAR PROVEEDOR: 
+{
+    "idprov": 1
+}
+
+TABLA EMPLEADOS: 
+
+1- AGREGAR EMPLEADO: 
+{
+    "empNomb": "Nombre",
+    "empApe": "Apellido",
+    "empDni": "DNI",
+    "empTel": "Telefono"
+}
+
+2 - MODIFICAR EMPLEADO: 
+{
+    "idempleado": ID,
+    "empNomb": "Nombre",
+    "empApe": "Apellido",
+    "empDni": "DNI",
+    "empTel": "Telefono"
+}
+
+3- BORRAR EMPLEADO: 
+{
+    "idempleado": ID
+}    
+
+TABLA PRODUCTOS: 
+
+1- AGREGAR PRODUCTO: 
+{
+    "nomprod": "Nombre",
+    "precio" : "precio",
+    "categoria": "categoria",
+    "id_prov": id prov relacionado,
+}
+
+2 - MODIFICAR PRODUCTO: 
+{
+    "idprod": ID,
+    "nomprod": "Nombre",
+    "precio" : "precio",
+    "categoria": "categoria",
+    "id_prov": id prov relacionado,
+}
+
+3- BORRAR PRODUCTO: 
+{
+    "idprod": ID
+}    
+
+
+
